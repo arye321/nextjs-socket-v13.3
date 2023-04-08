@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import io from "socket.io-client";
 import Head from "next/head";
@@ -9,13 +8,13 @@ export default function Home() {
 
   useEffect(() => {
     fetch("api/socket");
-    setSocket(io())
-
+    setSocket(io());
   }, []);
   if (socket) {
-    socket.on('connect', () => {
-      console.log('connected', socket.id)
-    })
+    socket.on("connect", () => {
+      console.log("connected", socket.id);
+      setSocket_state("connected ✅");
+    });
   }
   return (
     <>
